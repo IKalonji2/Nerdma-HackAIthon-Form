@@ -12,5 +12,5 @@ def submit_application():
         "track": st.session_state.track,
         "team": st.session_state.team
     }
-    response = requests.post('http://127.0.0.1:5000/submit', json=applicant_data)
+    response = requests.post('https://squid-app-mdj7h.ondigitalocean.app/submit', json=applicant_data)
     return response.status_code
