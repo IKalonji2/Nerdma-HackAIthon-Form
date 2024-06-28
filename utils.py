@@ -10,7 +10,8 @@ def submit_application():
         "company": st.session_state.company,
         "experience_level": st.session_state.experience_level,
         "track": st.session_state.track,
-        "team": st.session_state.team
+        "team": st.session_state.team,
+        "participation_mode": st.session_state.participation_mode  # Add participation_mode
     }
     response = requests.post('https://squid-app-mdj7h.ondigitalocean.app/submit', json=applicant_data)
     return response.status_code

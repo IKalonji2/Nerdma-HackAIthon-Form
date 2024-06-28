@@ -50,9 +50,11 @@ def form4():
 def form5():
     if "team" in st.session_state:
         with st.form("Form 5"):
+            participation_mode = st.selectbox("**Will you be able to attend the opening and closing in-person?**", ["On-site", "Online"])
             agree = st.checkbox("By submitting this form you are agreeing to the Nerdma Hack-AI-thon T&C's")
             form5_submit = st.form_submit_button("Submit")
 
         if form5_submit and agree:
+            st.session_state.participation_mode = participation_mode
             return True
     return False
