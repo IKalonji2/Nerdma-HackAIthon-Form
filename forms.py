@@ -1,4 +1,17 @@
+# forms.py
+
 import streamlit as st
+import re
+
+def is_valid_email(email):
+    # Regex for validating an email
+    regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(regex, email)
+
+def is_valid_phone(phone):
+    # Regex for validating a phone number (10 digits)
+    regex = r'^\d{10}$'
+    return re.match(regex, phone)
 
 def form1():
     with st.form("Form 1"):
@@ -13,12 +26,17 @@ def form1():
     if form1_submit:
         if not first_name or not last_name or not phone_number or not email or not company:
             st.warning("Please fill out all required fields.")
+        elif not is_valid_email(email):
+            st.warning("Please enter a valid email address.")
+        elif not is_valid_phone(phone_number):
+            st.warning("Please enter a valid 10-digit phone number.")
         else:
             st.session_state.first_name = first_name
             st.session_state.last_name = last_name
             st.session_state.phone_number = phone_number
             st.session_state.email = email
             st.session_state.company = company
+
 
 def form2():
     if "first_name" in st.session_state:

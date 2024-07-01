@@ -14,4 +14,5 @@ def submit_application():
         "participation_mode": st.session_state.participation_mode  # Add participation_mode
     }
     response = requests.post('https://squid-app-mdj7h.ondigitalocean.app/submit', json=applicant_data)
+    # response = requests.post('http://127.0.0.1:5000/submit', json=applicant_data)
     return response.status_code
